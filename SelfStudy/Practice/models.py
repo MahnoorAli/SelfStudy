@@ -20,10 +20,13 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
+
+    salary_per_day = models.IntegerField(default=0)
+    total_working_days = models.IntegerField(default=30)
+
     department = models.ForeignKey(Department, models.DO_NOTHING)
     timestamp = models.DateTimeField(default=datetime.now())
     history = HistoricalRecords()
-
 
     def __str__(self):
         return self.first_name
